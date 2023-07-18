@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tiempo de página</title>
+  <style>
+    body {
+      background-image: url(imagen/chicho2.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      font-family: sans-serif;
+      color: #ffffff;
+    }
+
+    .timer {
+      position: absolute;
+      position: center;
+      top: 0;
+      right: 0;
+      width: 1100px;
+      height: 50px;
+      background-color: #000000;
+      color: #ffffff;
+      font-size: 40px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="timer"></div>
+
+  <script>
+    let timer = document.querySelector('.timer');
+    let start = Date.now();
+
+    window.addEventListener('load', function() {
+      timer.textContent = '00:00:00';
+    });
+
+    setInterval(function() {
+      let now = Date.now();
+      let elapsed = now - start;
+      let minutes = Math.floor(elapsed / 60000);
+      let seconds = Math.floor((elapsed % 60000) / 1000);
+      let milliseconds = Math.floor((elapsed % 1000));
+
+      timer.textContent = `${minutes}:${seconds}:${milliseconds}`;
+    }, 1000);
+  </script>
+</body>
+</html>
